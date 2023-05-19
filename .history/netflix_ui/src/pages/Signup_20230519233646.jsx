@@ -37,11 +37,6 @@ const Container = styled.div`
     .content {
         position: absolute;
         top: 0;
-        left: 0;
-        background-color: rgba(0,0,0,0.5);
-        height: 100vh;
-        width: 100vw;
-        display: grid;
     }
 `;
 
