@@ -4,7 +4,7 @@ import BackgroundImage from '../components/BackgroundImage';
 import Header from '../components/Header';
 import { useNavigate } from 'react-router-dom';
 import { createUserWithEmailAndPassword, onAuthStateChanged } from "firebase/auth";
-import { firebaseAuth } from '../utils/firebase-config';
+import { firebaseAuth } from '../firebase';
 
 
 const Signup = () => {
@@ -26,8 +26,10 @@ const Signup = () => {
         }
     }
 
-    onAuthStateChanged(firebaseAuth, (currentUser) => {
-        if (currentUser) navigate("/");
+    onAuthStateChanged(firebaseAuth, (currentuser) => {
+        if (currentuser) {
+            navigate("/");
+        }
     });
 
     return (

@@ -22,23 +22,3 @@ body {
 body::-webkit-scrollbar {
     display: none;
 }
-
-.flex {
-  display: flex;
-}
-
-.column {
-  flex-direction: column;
-}
-
-.j-between {
-  justify-content: space-between;
-}
-
-.j-center {
-  justify-content: center;
-}
-
-.a-center {
-  align-items: center;
-}

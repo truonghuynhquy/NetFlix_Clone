@@ -26,8 +26,10 @@ const Signup = () => {
         }
     }
 
-    onAuthStateChanged(firebaseAuth, (currentUser) => {
-        if (currentUser) navigate("/");
+    onAuthStateChanged(firebaseAuth, (currentuser) => {
+        if (currentuser) {
+            navigate("/");
+        }
     });
 
     return (
