@@ -13,7 +13,7 @@ const Netflix = () => {
 
     return (
         <Container>
-            <Navbar isScrolled={isScrolled} />
+            <Navbar />
         </Container>
     );
 };
