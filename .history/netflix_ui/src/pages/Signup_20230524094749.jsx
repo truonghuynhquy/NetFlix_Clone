@@ -32,7 +32,7 @@ const Signup = () => {
     });
 
     return (
-        <Container showPassword={showPassword}>
+        <Container ShowPassword={showPassword}>
             <BackgroundImage />
             <div className="content">
 
@@ -98,7 +98,7 @@ const Container = styled.div`
         }
         .form{
             display: grid;
-            grid-template-columns: ${({ showPassword }) => showPassword ? "1fr 1fr" : "2fr 1fr"};
+            grid-template-columns: ${({ ShowPassword }) => ShowPassword ? "1fr 1fr" : "2fr 1fr"};
             width: 60%;
             input {
                 color: black;

@@ -9,7 +9,7 @@ import { firebaseAuth } from '../utils/firebase-config';
 
 const Signup = () => {
 
-    const [showPassword, setShowPassword] = useState(false);
+    const [showpassword, setShowPassword] = useState(false);
     const [formValues, setFormValues] = useState({
         email: "",
         password: "",
@@ -32,7 +32,7 @@ const Signup = () => {
     });
 
     return (
-        <Container showPassword={showPassword}>
+        <Container showpassword={showpassword}>
             <BackgroundImage />
             <div className="content">
 
@@ -53,7 +53,7 @@ const Signup = () => {
                             name='email'
                             onChange={(e) => { setFormValues({ ...formValues, [e.target.name]: e.target.value, }) }}
                             value={formValues.email} />
-                        {showPassword && (
+                        {showpassword && (
                             <input
                                 type="password"
                                 placeholder='Password'
@@ -62,11 +62,11 @@ const Signup = () => {
                                 value={formValues.password}
                             />
                         )}
-                        {!showPassword && (<button onClick={() => setShowPassword(true)}>Get Started</button>)}
+                        {!showpassword && (<button onClick={() => setShowPassword(true)}>Get Started</button>)}
 
                     </div>
 
-                    {showPassword && (<button onClick={handleSignIn}>Log In</button>)}
+                    {showpassword && (<button onClick={handleSignIn}>Log In</button>)}
                 </div>
 
             </div>
@@ -98,7 +98,7 @@ const Container = styled.div`
         }
         .form{
             display: grid;
-            grid-template-columns: ${({ showPassword }) => showPassword ? "1fr 1fr" : "2fr 1fr"};
+            grid-template-columns: ${({ showpassword }) => showpassword ? "1fr 1fr" : "2fr 1fr"};
             width: 60%;
             input {
                 color: black;

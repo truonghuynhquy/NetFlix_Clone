@@ -18,7 +18,7 @@ const Login = () => {
         try {
             await signInWithEmailAndPassword(firebaseAuth, email, password);    //firebaseAuth is imported from firebase.js
         } catch (err) {
-            alert("Không thể đăng nhập tài khoản!");
+            alert("Không thể đăng ký tài khoản!");
             console.log(err);
         }
     }
@@ -80,7 +80,7 @@ const Container = styled.div`
                 gap: 2rem;
                 color: white;
                 .title {
-                    font-size: 2.2rem;
+                    font-size: 2.5rem;
                 }
                 .container {
                     gap: 2rem;

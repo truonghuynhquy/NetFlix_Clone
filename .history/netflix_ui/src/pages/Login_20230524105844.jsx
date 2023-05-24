@@ -18,7 +18,7 @@ const Login = () => {
         try {
             await signInWithEmailAndPassword(firebaseAuth, email, password);    //firebaseAuth is imported from firebase.js
         } catch (err) {
-            alert("Không thể đăng nhập tài khoản!");
+            alert("Không thể đăng ký tài khoản!");
             console.log(err);
         }
     }
@@ -74,20 +74,16 @@ const Container = styled.div`
             gap: 2rem;
             height: 85vh;
             .form {
-                padding: 3rem;
-                width: 30vw;
+                padding: 2rem;
+                width: 60vw;
                 background-color: #000000b0;
                 gap: 2rem;
                 color: white;
-                .title {
-                    font-size: 2.2rem;
-                }
                 .container {
                     gap: 2rem;
                     input {
                         padding: 0.5rem 1rem;
-                        border-radius: 0.2rem;
-                        width: 20rem;
+                        width: 15rem;
                     }
                     button {
                         padding: 0.5rem 1rem;

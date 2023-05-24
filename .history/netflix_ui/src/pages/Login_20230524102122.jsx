@@ -7,7 +7,7 @@ import { createUserWithEmailAndPassword, onAuthStateChanged } from "firebase/aut
 import { firebaseAuth } from '../utils/firebase-config';
 
 
-const Signup = () => {
+const Login = () => {
 
     const [showPassword, setShowPassword] = useState(false);
     const [formValues, setFormValues] = useState({
@@ -135,4 +135,4 @@ const Container = styled.div`
     }
 `;
 
-export default Signup;
+export default Login;

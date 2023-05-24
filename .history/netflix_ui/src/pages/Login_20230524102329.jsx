@@ -3,13 +3,14 @@ import styled from 'styled-components';
 import BackgroundImage from '../components/BackgroundImage';
 import Header from '../components/Header';
 import { useNavigate } from 'react-router-dom';
-import { createUserWithEmailAndPassword, onAuthStateChanged } from "firebase/auth";
+import { signInWithEmailAndPassword, onAuthStateChanged } from "firebase/auth";
 import { firebaseAuth } from '../utils/firebase-config';
 
 
-const Signup = () => {
+const Login = () => {
 
-    const [showPassword, setShowPassword] = useState(false);
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
     const [formValues, setFormValues] = useState({
         email: "",
         password: "",
@@ -17,10 +18,9 @@ const Signup = () => {
 
     const navigate = useNavigate();
 
-    async function handleSignIn() {
+    async function handleLogin() {
         try {
-            const { email, password } = formValues;
-            await createUserWithEmailAndPassword(firebaseAuth, email, password);    //firebaseAuth is imported from firebase.js
+            await signInWithEmailAndPassword(firebaseAuth, email, password);    //firebaseAuth is imported from firebase.js
         } catch (err) {
             alert("Không thể đăng ký tài khoản!");
             console.log(err);
@@ -32,44 +32,8 @@ const Signup = () => {
     });
 
     return (
-        <Container showPassword={showPassword}>
-            <BackgroundImage />
-            <div className="content">
-
-                <Header login />
-                <div className='body flex column a-center j-center'>
-                    <div className='text flex column'>
-                        <h1>Unlimited movies, TV shows and more.</h1>
-                        <h4>Watch anywhere. Cancel anytime</h4>
-                        <h6>
-                            Ready to watch? Enter your email to create or restart your membership.
-                        </h6>
-                    </div>
-
-                    <div className="form">
-                        <input
-                            type="email"
-                            placeholder="Email Address"
-                            name='email'
-                            onChange={(e) => { setFormValues({ ...formValues, [e.target.name]: e.target.value, }) }}
-                            value={formValues.email} />
-                        {showPassword && (
-                            <input
-                                type="password"
-                                placeholder='Password'
-                                name='password'
-                                onChange={(e) => { setFormValues({ ...formValues, [e.target.name]: e.target.value, }) }}
-                                value={formValues.password}
-                            />
-                        )}
-                        {!showPassword && (<button onClick={() => setShowPassword(true)}>Get Started</button>)}
-
-                    </div>
-
-                    {showPassword && (<button onClick={handleSignIn}>Log In</button>)}
-                </div>
-
-            </div>
+        <Container >
+            
         </Container>
     );
 };
@@ -135,4 +99,4 @@ const Container = styled.div`
     }
 `;
 
-export default Signup;
+export default Login;

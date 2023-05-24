@@ -22,7 +22,7 @@ const Signup = () => {
             const { email, password } = formValues;
             await createUserWithEmailAndPassword(firebaseAuth, email, password);    //firebaseAuth is imported from firebase.js
         } catch (err) {
-            alert("Không thể đăng ký tài khoản!");
+            alert(err.message);
             console.log(err);
         }
     }

@@ -22,7 +22,6 @@ const Signup = () => {
             const { email, password } = formValues;
             await createUserWithEmailAndPassword(firebaseAuth, email, password);    //firebaseAuth is imported from firebase.js
         } catch (err) {
-            alert("Không thể đăng ký tài khoản!");
             console.log(err);
         }
     }
@@ -49,7 +48,7 @@ const Signup = () => {
                     <div className="form">
                         <input
                             type="email"
-                            placeholder="Email Address"
+                            placeholder='Email Address'
                             name='email'
                             onChange={(e) => { setFormValues({ ...formValues, [e.target.name]: e.target.value, }) }}
                             value={formValues.email} />

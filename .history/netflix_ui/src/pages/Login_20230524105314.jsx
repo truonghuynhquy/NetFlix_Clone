@@ -3,24 +3,20 @@ import styled from 'styled-components';
 import BackgroundImage from '../components/BackgroundImage';
 import Header from '../components/Header';
 import { useNavigate } from 'react-router-dom';
-import { createUserWithEmailAndPassword, onAuthStateChanged } from "firebase/auth";
+import { signInWithEmailAndPassword, onAuthStateChanged } from "firebase/auth";
 import { firebaseAuth } from '../utils/firebase-config';
 
 
-const Signup = () => {
+const Login = () => {
 
-    const [showPassword, setShowPassword] = useState(false);
-    const [formValues, setFormValues] = useState({
-        email: "",
-        password: "",
-    });
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
 
     const navigate = useNavigate();
 
-    async function handleSignIn() {
+    async function handleLogin() {
         try {
-            const { email, password } = formValues;
-            await createUserWithEmailAndPassword(firebaseAuth, email, password);    //firebaseAuth is imported from firebase.js
+            await signInWithEmailAndPassword(firebaseAuth, email, password);    //firebaseAuth is imported from firebase.js
         } catch (err) {
             alert("Không thể đăng ký tài khoản!");
             console.log(err);
@@ -32,43 +28,32 @@ const Signup = () => {
     });
 
     return (
-        <Container showPassword={showPassword}>
+        <Container >
             <BackgroundImage />
             <div className="content">
-
-                <Header login />
-                <div className='body flex column a-center j-center'>
-                    <div className='text flex column'>
-                        <h1>Unlimited movies, TV shows and more.</h1>
-                        <h4>Watch anywhere. Cancel anytime</h4>
-                        <h6>
-                            Ready to watch? Enter your email to create or restart your membership.
-                        </h6>
-                    </div>
-
-                    <div className="form">
-                        <input
-                            type="email"
-                            placeholder="Email Address"
-                            name='email'
-                            onChange={(e) => { setFormValues({ ...formValues, [e.target.name]: e.target.value, }) }}
-                            value={formValues.email} />
-                        {showPassword && (
+                <Header />
+                <div className="form-container flex column a-center j-center">
+                    <div className="form flex column a-center j-center">
+                        <div className="title">
+                            <h3>Login</h3>
+                        </div>
+                        <div className="container flex column">
+                            <input
+                                type="text"
+                                placeholder='Email'
+                                onChange={(e) => setEmail(e.target.value)}
+                                value={email}
+                            />
                             <input
                                 type="password"
                                 placeholder='Password'
-                                name='password'
-                                onChange={(e) => { setFormValues({ ...formValues, [e.target.name]: e.target.value, }) }}
-                                value={formValues.password}
+                                onChange={(e) => setPassword(e.target.value)}
+                                value={password}
                             />
-                        )}
-                        {!showPassword && (<button onClick={() => setShowPassword(true)}>Get Started</button>)}
-
+                            <button onClick={handleLogin}>Login to your account</button>
+                        </div>
                     </div>
-
-                    {showPassword && (<button onClick={handleSignIn}>Log In</button>)}
                 </div>
-
             </div>
         </Container>
     );
@@ -83,8 +68,19 @@ const Container = styled.div`
         background-color: rgba(0,0,0,0.5);
         height: 100vh;
         width: 100vw;
-        display: grid;
+        background-color: rgba(0, 0, 0, 0.5);
         grid-template-rows: 15vh 85vh;
+        .form-container {
+            gap: 2rem;
+            height: 85vh;
+            .form {
+                padding: 2rem;
+                width: 25vw;
+                background-color: #0d0d12;
+                gap: 2rem;
+                color: white;
+            }
+        }
     }
     .body {
         gap: 1rem;
@@ -135,4 +131,4 @@ const Container = styled.div`
     }
 `;
 
-export default Signup;
+export default Login;

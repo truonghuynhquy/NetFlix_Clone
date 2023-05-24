@@ -18,7 +18,7 @@ const Login = () => {
         try {
             await signInWithEmailAndPassword(firebaseAuth, email, password);    //firebaseAuth is imported from firebase.js
         } catch (err) {
-            alert("Không thể đăng nhập tài khoản!");
+            alert("Không thể đăng ký tài khoản!");
             console.log(err);
         }
     }

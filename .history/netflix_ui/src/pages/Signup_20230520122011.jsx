@@ -22,7 +22,6 @@ const Signup = () => {
             const { email, password } = formValues;
             await createUserWithEmailAndPassword(firebaseAuth, email, password);    //firebaseAuth is imported from firebase.js
         } catch (err) {
-            alert("Không thể đăng ký tài khoản!");
             console.log(err);
         }
     }
@@ -49,7 +48,7 @@ const Signup = () => {
                     <div className="form">
                         <input
                             type="email"
-                            placeholder="Email Address"
+                            placeholder='Email address'
                             name='email'
                             onChange={(e) => { setFormValues({ ...formValues, [e.target.name]: e.target.value, }) }}
                             value={formValues.email} />
@@ -100,12 +99,13 @@ const Container = styled.div`
             display: grid;
             grid-template-columns: ${({ showPassword }) => showPassword ? "1fr 1fr" : "2fr 1fr"};
             width: 60%;
+            border-radius: 24px;
             input {
                 color: black;
                 border: none;
                 padding: 1.5rem;
                 font-size: 1.2rem;
-                border-radius: 2px;
+                border-radius: 8px;
                 border: 1px solid black;
                 &:focus {
                     outline: none;
@@ -119,7 +119,6 @@ const Container = styled.div`
                 color: white;
                 font-weight: bolder;
                 font-size: 1.05rem;
-                border-radius: 8px;
             }
         }
         button {

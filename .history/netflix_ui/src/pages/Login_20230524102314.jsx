@@ -3,13 +3,14 @@ import styled from 'styled-components';
 import BackgroundImage from '../components/BackgroundImage';
 import Header from '../components/Header';
 import { useNavigate } from 'react-router-dom';
-import { createUserWithEmailAndPassword, onAuthStateChanged } from "firebase/auth";
+import { signInWithEmailAndPassword, onAuthStateChanged } from "firebase/auth";
 import { firebaseAuth } from '../utils/firebase-config';
 
 
-const Signup = () => {
+const Login = () => {
 
-    const [showPassword, setShowPassword] = useState(false);
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
     const [formValues, setFormValues] = useState({
         email: "",
         password: "",
@@ -17,10 +18,9 @@ const Signup = () => {
 
     const navigate = useNavigate();
 
-    async function handleSignIn() {
+    async function handleLogin() {
         try {
-            const { email, password } = formValues;
-            await createUserWithEmailAndPassword(firebaseAuth, email, password);    //firebaseAuth is imported from firebase.js
+            await signInWithEmailAndPassword(firebaseAuth, email, password);    //firebaseAuth is imported from firebase.js
         } catch (err) {
             alert("Không thể đăng ký tài khoản!");
             console.log(err);
@@ -135,4 +135,4 @@ const Container = styled.div`
     }
 `;
 
-export default Signup;
+export default Login;
